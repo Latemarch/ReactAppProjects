@@ -3,11 +3,27 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import AppToDoList from './Todo/AppTodoList.jsx'
 import reportWebVitals from './reportWebVitals'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Home from './Home'
+import SearchHearder from './SearchHearder'
+import AppYoutube from './Youtube/AppYoutube'
+export const projects = [
+  { path: 'todo', element: <AppToDoList /> },
+  { path: 'youtube', element: <AppYoutube /> },
+]
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+    children: projects,
+  },
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <AppToDoList />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
 

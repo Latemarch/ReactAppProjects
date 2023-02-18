@@ -11,13 +11,6 @@ const list = [
   { id: 3, text: 'shopping', status: 'Active' },
 ]
 
-const Wrapper = styled.div`
-  display: flex;
-  width: 100hv;
-  height: 100hv;
-  justify-content: center;
-  align-items: center;
-`
 const Container = styled.div`
   width: 300px;
   height: 400px;
