@@ -1,24 +1,52 @@
 import { useState } from 'react'
+import styled from 'styled-components'
+const Form = styled.form`
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+`
+const InputToDo = styled.input`
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 70%;
+  border: none;
+  color: white;
+  padding: 10px;
+  &:focus {
+    outline: none;
+  }
+  font-size: 1.2rem;
+`
+const Button = styled.button`
+  width: 30%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  &:hover {
+    background-color: tomato;
+  }
+`
 
-export default function Input({ toDos, onAdd }) {
+export default function Input({ toDos, setToDos }) {
   const [text, setText] = useState('')
   const handlechange = (e) => setText(e.target.value)
   const handleSubmit = (e) => {
     e.preventDefault()
-    onAdd([
-      ...toDos,
-      { id: `${text}${toDos.length}`, text: text, status: 'Active' },
-    ])
-    setText('')
+    if (text.trim().length !== 0) {
+      setToDos([
+        ...toDos,
+        { id: `${text}${toDos.length}`, text, status: 'Active' },
+      ])
+      setText('')
+    }
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Form onSubmit={handleSubmit}>
+      <InputToDo
         placeholder="Add Todo..."
         value={text}
         onChange={handlechange}
-      ></input>
-      <button>Add</button>
-    </form>
+      ></InputToDo>
+      <Button>Add</Button>
+    </Form>
   )
 }
