@@ -11,7 +11,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: teal;
-  position: absolute;
+  position: relative;
   top: 0;
 `
 const Project = styled.div`
@@ -24,9 +24,9 @@ export default function SearchHearder() {
   return (
     <Header>
       <Link to="/">HOME</Link>
-      {projects.map((p) => (
+      {projects.map((p, index) => (
         <Link to={`${p.path}`}>
-          <Project>{p.path}</Project>
+          <Project key={`${index}${index}`}>{p.path}</Project>
         </Link>
       ))}
     </Header>

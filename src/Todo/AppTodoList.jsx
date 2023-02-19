@@ -12,6 +12,7 @@ const list = [
 ]
 
 const Container = styled.div`
+  margin: 5%;
   width: 300px;
   height: 400px;
   display: flex;
