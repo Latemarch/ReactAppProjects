@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 import TimeAgo from "javascript-time-ago";
 
@@ -8,13 +8,15 @@ import ko from "javascript-time-ago/locale/ko.json";
 TimeAgo.addDefaultLocale(ko);
 
 export default function VideoCard({ video }) {
+	const { title, publishedAt, thumbnails } = video.snippet;
+	const navigate = useNavigate();
 	return (
-		<Link to={`watch/${video.id}`}>
-			<img src={video.snippet.thumbnails.default.url} />
-			<div>{video.snippet.title}</div>
+		<li onClick={() => navigate(`/youtube/watch/${video.id}`)}>
+			<img src={thumbnails.default.url} />
+			<div>{title}</div>
 			<span>
-				<ReactTimeAgo date={video.snippet.publishedAt} />
+				<ReactTimeAgo date={publishedAt.toString()} />
 			</span>
-		</Link>
+		</li>
 	);
 }
