@@ -1,34 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { projects } from "./index";
-import { Link } from "react-router-dom";
-
-const Header = styled.div`
-	display: flex;
-	height: 5%;
-	width: 100%;
-	padding: 20px;
-	justify-content: space-between;
-	align-items: center;
-	background-color: teal;
-	position: relative;
-	top: 0;
-`;
-const Project = styled.div`
-	display: flex;
-	text-transform: uppercase;
-	padding: 0 10px;
-`;
+import React from 'react'
+import styled from 'styled-components'
+import { projects } from './index'
+import { Link } from 'react-router-dom'
 
 export default function SearchHearder() {
-	return (
-		<Header>
-			<Link to="/">HOME</Link>
-			{projects.map((p, index) => (
-				<Link to={`${p.path}`} key={`${index}${p}`}>
-					<Project>{p.path}</Project>
-				</Link>
-			))}
-		</Header>
-	);
+  return (
+    <header className="w-full flex text-2xl border-b items-center justify-between">
+      <Link to="/">HOME</Link>
+      {projects.map((p, index) => (
+        <Link to={`${p.path}`} key={`${index}${p}`}>
+          <div className="p-3">{p.path}</div>
+        </Link>
+      ))}
+    </header>
+  )
 }

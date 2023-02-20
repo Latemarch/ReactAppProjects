@@ -5,8 +5,8 @@ const HomePage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
 `
 
 export default function Home() {
