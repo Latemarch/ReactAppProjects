@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { searchById } from '../apis/youtubeApi'
 import { useQuery } from 'react-query'
 import VideoCard from '../Components/VideoCard'
@@ -10,31 +10,44 @@ export default function Details() {
     () => searchById(id),
     { staleTime: 6000 },
   )
+  const {
+    state: { video },
+  } = useLocation()
   return (
-    <>
-      <div>
-        <iframe
-          id="player"
-          type="text/html"
-          width="640"
-          height="360"
-          src={`http://www.youtube.com/embed/${id}`}
-          frameBorder="0"
-        ></iframe>
+    <article className="flex flex-col lg:flex-row">
+      <div className="basis-4/6">
         {isLoading ? (
           'Loading...'
         ) : (
-          <>
-            <p>{videos[0].snippet.title}</p>
-            <p>{videos[0].snippet.title.description}</p>
-          </>
+          <iframe
+            id="player"
+            type="text/html"
+            width="100%"
+            height="640"
+            src={`http://www.youtube.com/embed/${id}`}
+            frameBorder="0"
+          ></iframe>
+        )}
+        {isLoading ? (
+          'Loading...'
+        ) : (
+          <div className="p-4">
+            <h2 className="text-xl font-bold">{videos[0].snippet.title}</h2>
+            <p className="whitespace-pre-wrap">
+              {videos[0].snippet.description}
+            </p>
+          </div>
         )}
       </div>
-      <section>
+      <section className="basis-2/6">
         {videos?.map((video) => (
-          <VideoCard key={`${video.snippet.publishedAt}`} video={video} />
+          <VideoCard
+            key={`${video.snippet.publishedAt}`}
+            video={video}
+            type="list"
+          />
         ))}
       </section>
-    </>
+    </article>
   )
 }

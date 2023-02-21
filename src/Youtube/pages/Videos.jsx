@@ -14,14 +14,13 @@ export default function Videos() {
   )
 
   return (
-    <div>
-      {keyward}
+    <ul className="bg-bgColor grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 gap-y-4">
       {error && 'ERROR'}
       {isLoading
         ? 'Loading...'
         : videos?.map((video) => (
             <VideoCard key={`${video.snippet.publishedAt}`} video={video} />
           ))}
-    </div>
+    </ul>
   )
 }
