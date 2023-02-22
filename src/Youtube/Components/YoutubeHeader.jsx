@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 export default function YoutubeHeader() {
   const { keyward } = useParams()
-  const [text, setText] = useState()
+  const [text, setText] = useState('')
   const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()

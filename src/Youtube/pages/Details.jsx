@@ -1,5 +1,5 @@
-import { useLocation, useParams } from 'react-router-dom'
-import { searchById } from '../apis/youtubeApi'
+import { useParams } from 'react-router-dom'
+import { Youtube } from '../apis/youtubeApi'
 import { useQuery } from 'react-query'
 import VideoCard from '../Components/VideoCard'
 
@@ -7,12 +7,9 @@ export default function Details() {
   const { id } = useParams()
   const { isLoading, data: videos } = useQuery(
     ['detail', id],
-    () => searchById(id),
+    () => Youtube.related({ id }),
     { staleTime: 6000 },
   )
-  const {
-    state: { video },
-  } = useLocation()
   return (
     <article className="flex flex-col lg:flex-row">
       <div className="basis-4/6">

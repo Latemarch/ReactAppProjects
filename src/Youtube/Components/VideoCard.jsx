@@ -3,6 +3,7 @@ import ReactTimeAgo from 'react-time-ago'
 import TimeAgo from 'javascript-time-ago'
 
 import ko from 'javascript-time-ago/locale/ko.json'
+import { convertId } from '../apis/youtubeApi'
 
 TimeAgo.addDefaultLocale(ko)
 
@@ -13,9 +14,7 @@ export default function VideoCard({ video, type }) {
   return (
     <li
       className={isList ? 'flex gap-1 m-2' : ''}
-      onClick={() =>
-        navigate(`/youtube/watch/${video.id}`, { state: { video } })
-      }
+      onClick={() => navigate(`/youtube/watch/${convertId(video.id)}`)}
     >
       <img
         src={thumbnails.medium.url}
@@ -25,7 +24,7 @@ export default function VideoCard({ video, type }) {
         <p className="font-semibold my-2 line-clamp-2">{title}</p>
         <p className="text">{channelTitle}</p>
         <span>
-          <ReactTimeAgo date={publishedAt.toString()} />
+          <ReactTimeAgo date={new Date(publishedAt)} />
         </span>
       </div>
     </li>
