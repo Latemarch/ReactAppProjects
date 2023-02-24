@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Youtube } from '../apis/youtubeApi'
+import { convertId, Youtube } from '../apis/youtubeApi'
 import { useQuery } from 'react-query'
 import VideoCard from '../Components/VideoCard'
 
@@ -21,7 +21,7 @@ export default function Details() {
             type="text/html"
             width="100%"
             height="640"
-            src={`http://www.youtube.com/embed/${id}`}
+            src={`http://www.youtube.com/embed/${convertId(id)}`}
             frameBorder="0"
           ></iframe>
         )}

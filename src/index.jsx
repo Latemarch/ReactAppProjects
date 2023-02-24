@@ -7,9 +7,11 @@ import Home from './Home'
 import AppYoutube from './Youtube/AppYoutube'
 import Videos from './Youtube/pages/Videos'
 import Details from './Youtube/pages/Details'
+import AppToDoRedux from './TodoWithRedux/AppTodoRedux'
 
 export const projects = [
   { path: 'todo', element: <AppToDoList /> },
+  { path: 'todoredux', element: <AppToDoRedux /> },
   {
     path: 'youtube',
     element: <AppYoutube />,
