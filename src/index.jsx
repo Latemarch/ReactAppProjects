@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import AppToDoList from './Todo/AppTodoList.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Home'
 import AppYoutube from './Youtube/AppYoutube'
@@ -10,8 +9,7 @@ import Details from './Youtube/pages/Details'
 import AppToDoRedux from './TodoWithRedux/AppTodoRedux'
 
 export const projects = [
-  { path: 'todo', element: <AppToDoList /> },
-  { path: 'todoredux', element: <AppToDoRedux /> },
+  { path: 'todo', element: <AppToDoRedux /> },
   {
     path: 'youtube',
     element: <AppYoutube />,

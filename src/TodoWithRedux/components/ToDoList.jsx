@@ -17,7 +17,7 @@ const Ul = styled.ul`
 `
 
 export default function ToDoList() {
-  const { toDos, filter } = useSelector((state) => state.toDoReducer)
+  const { toDos, filter } = useSelector((state) => state.toDos)
 
   return (
     <Wrapper>

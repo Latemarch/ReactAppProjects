@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import toDoReducer from './fiatures/toDoSlice'
+import toDos from './fiatures/toDoSlice'
 
 export default configureStore({
-  reducer: { toDoReducer },
+  reducer: { toDos },
 })

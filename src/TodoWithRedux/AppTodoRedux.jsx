@@ -23,16 +23,14 @@ const Container = styled.div`
   -moz-box-shadow: 8px 9px 5px 2px rgba(0, 0, 0, 0.51);
 `
 
-function AppToDoList() {
-  return (
-    <Provider store={store}>
-      <Container>
-        <Header />
-        <ToDoList />
-        <Input />
-      </Container>
-    </Provider>
-  )
-}
+const AppToDoList = () => (
+  <Provider store={store}>
+    <Container>
+      <Header />
+      <ToDoList />
+      <Input />
+    </Container>
+  </Provider>
+)
 
 export default AppToDoList

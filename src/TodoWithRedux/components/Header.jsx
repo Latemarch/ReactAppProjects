@@ -21,21 +21,21 @@ const Button = styled.button`
   }
 `
 export default function Header() {
-  const filter = useSelector((state) => state.toDoReducer.filter)
+  const activeFilter = useSelector((state) => state.toDos.filter)
   const dispatch = useDispatch()
 
   const filters = ['All', 'Active', 'Completed']
 
   return (
     <Container>
-      {filters.map((f, index) => (
+      {filters.map((filter, index) => (
         <Button
           key={index}
-          onClick={() => dispatch(updateFilter(f))}
-          filter={f}
-          activeFilter={filter}
+          onClick={() => dispatch(updateFilter(filter))}
+          filter={filter}
+          activeFilter={activeFilter}
         >
-          {f}
+          {filter}
         </Button>
       ))}
     </Container>
