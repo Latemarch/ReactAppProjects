@@ -7,6 +7,12 @@ import AppYoutube from './Youtube/AppYoutube'
 import Videos from './Youtube/pages/Videos'
 import Details from './Youtube/pages/Details'
 import AppToDoRedux from './TodoWithRedux/AppTodoRedux'
+import AppShoppy from './Shoppy/AppShoppy'
+import AllProductsShoppy from './Shoppy/pages/AllProductsShoppy'
+import NewProductShoppy from './Shoppy/pages/NewProductShoppy'
+import ProductDetailShoppy from './Shoppy/pages/ProductDetailShoppy'
+import MyCartShoppy from './Shoppy/pages/MyCartShoppy'
+import HomeShoppy from './Shoppy/HomeShoppy'
 
 export const projects = [
   { path: 'todo', element: <AppToDoRedux /> },
@@ -17,6 +23,17 @@ export const projects = [
       { index: true, element: <Videos /> },
       { path: ':keyward', element: <Videos /> },
       { path: 'watch/:id', element: <Details /> },
+    ],
+  },
+  {
+    path: 'shoppy',
+    element: <AppShoppy />,
+    children: [
+      { index: true, element: <HomeShoppy /> },
+      { path: 'products/new', element: <NewProductShoppy /> },
+      { path: 'products/:id', element: <ProductDetailShoppy /> },
+      { path: 'carts', element: <MyCartShoppy /> },
+      { path: 'products', element: <AllProductsShoppy /> },
     ],
   },
 ]
