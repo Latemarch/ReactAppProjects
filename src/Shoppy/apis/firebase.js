@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, child, get } from 'firebase/database'
+import { getDatabase, ref, get } from 'firebase/database'
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_SHOPPY_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_SHOPPY_FIREBASE_AUTH_DOMAIN,
@@ -30,10 +30,10 @@ export function logout() {
 }
 
 export function onUserStateChange(callback) {
+  // actually ftn bellow watch the authstate and let me know whenever state changed
   onAuthStateChanged(auth, async (user) => {
     const updatedUser = user ? await adminUser(user) : null
     callback(updatedUser)
-    console.log(updatedUser)
   })
 }
 
