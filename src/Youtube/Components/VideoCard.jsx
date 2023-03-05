@@ -19,6 +19,7 @@ export default function VideoCard({ video, type }) {
       <img
         src={thumbnails.medium.url}
         className={isList ? 'w-1/2 mr-2' : 'w-full'}
+        alt={title}
       />
       <div>
         <p className="font-semibold my-2 line-clamp-2">{title}</p>

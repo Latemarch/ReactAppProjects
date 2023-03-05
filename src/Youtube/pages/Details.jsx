@@ -17,6 +17,7 @@ export default function Details() {
           'Loading...'
         ) : (
           <iframe
+            title={videos[0].snippet.title}
             id="player"
             type="text/html"
             width="100%"

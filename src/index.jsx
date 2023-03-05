@@ -13,6 +13,7 @@ import NewProductShoppy from './Shoppy/pages/NewProductShoppy'
 import ProductDetailShoppy from './Shoppy/pages/ProductDetailShoppy'
 import MyCartShoppy from './Shoppy/pages/MyCartShoppy'
 import HomeShoppy from './Shoppy/HomeShoppy'
+import ProtectedRouteShoppy from './Shoppy/components/ProtectedRouteShoppy'
 
 export const projects = [
   { path: 'todo', element: <AppToDoRedux /> },
@@ -30,7 +31,14 @@ export const projects = [
     element: <AppShoppy />,
     children: [
       { index: true, element: <HomeShoppy /> },
-      { path: 'products/new', element: <NewProductShoppy /> },
+      {
+        path: 'products/new',
+        element: (
+          <ProtectedRouteShoppy requireAdmin>
+            <NewProductShoppy />
+          </ProtectedRouteShoppy>
+        ),
+      },
       { path: 'products/:id', element: <ProductDetailShoppy /> },
       { path: 'carts', element: <MyCartShoppy /> },
       { path: 'products', element: <AllProductsShoppy /> },

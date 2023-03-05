@@ -6,8 +6,8 @@ import UserShoppy from './UserShoppy'
 export default function HeaderShoppy() {
   const { user, login, logout } = useAuthContext() as IContext
   return (
-    <header className="bg-gray-400 flex justify-between items-center py-3 p-2 ">
-      <Link to="/shoppy" className="flex items-center text-amber-600 ">
+    <header className="flex justify-between items-center py-3 p-2 ">
+      <Link to="/shoppy" className="flex items-center text-brand ">
         <BsShop className="text-4xl mr-2" />
         <h1 className="text-4xl font-bold">Shoppy</h1>
       </Link>
