@@ -1,6 +1,7 @@
 import { BsPen, BsShop } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { IContext, useAuthContext } from '../context/ContextShoppy'
+import CartStatusShoppy from './CartStatusShoppy'
 import UserShoppy from './UserShoppy'
 
 export default function HeaderShoppy() {
@@ -18,11 +19,12 @@ export default function HeaderShoppy() {
           </Link>
         )}
         <Link to="products">Products</Link>
-        <Link to="carts">Carts</Link>
+        <Link to="carts">
+          <CartStatusShoppy />
+        </Link>
         {!user && <button onClick={login}>Login</button>}
         {user && <UserShoppy user={user} />}
         {user && <button onClick={logout}>Logout</button>}
-        <p>Home</p>
       </nav>
     </header>
   )

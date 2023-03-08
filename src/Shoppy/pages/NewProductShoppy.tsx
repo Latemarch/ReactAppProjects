@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addNewProduct } from '../apis/firebase'
+import { addNewProduct } from '../apis/firebase.js'
 import { uploadImage } from '../apis/uploader'
 interface IProduct {
   title?: string
@@ -27,7 +27,8 @@ export default function NewProductShoppy() {
     setLoading(true)
     uploadImage(file)
       .then((url) => {
-        addNewProduct(product, url)
+        const parsedUrl = JSON.parse(url)
+        addNewProduct(product, parsedUrl.url)
       })
       .then(() => {
         setSuccess('Uploading is completed.')

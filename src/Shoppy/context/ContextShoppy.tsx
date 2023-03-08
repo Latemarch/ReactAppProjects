@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { onUserStateChange } from '../apis/firebase'
-import { login, logout } from '../apis/firebase'
+import { login, logout, onUserStateChange } from '../apis/firebase.js'
 
 export interface IContext {
-  user: { isAdmin?: boolean }
+  user: { isAdmin?: boolean; uid?: string }
   login(): void
   logout(): void
 }

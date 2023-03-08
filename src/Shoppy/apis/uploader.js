@@ -6,5 +6,5 @@ export async function uploadImage(file, callback) {
   return fetch(process.env.REACT_APP_SHOPPY_CLOUDINARY_URL, {
     method: 'POST',
     body: data,
-  }).then((res) => res.url)
+  }).then((response) => response.text())
 }
