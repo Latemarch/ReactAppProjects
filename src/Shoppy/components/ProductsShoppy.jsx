@@ -2,6 +2,7 @@ import useProducts from '../hooks/useProducts.js'
 import ProductCard from './ProductCard.tsx'
 
 export default function ProductsShoppy() {
+  console.log('test')
   const {
     productsQuery: { isLoading, error, data: products },
   } = useProducts()
