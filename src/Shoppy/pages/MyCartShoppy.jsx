@@ -1,16 +1,15 @@
-import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { BsFillPlusCircleFill } from 'react-icons/bs'
 import { FaEquals } from 'react-icons/fa'
-import { getCart } from '../apis/firebase'
 import CartItemShoppy from '../components/CartItemShoppy'
 import PriceCardShoppy from '../components/PriceCardShoppy'
 import { useAuthContext } from '../context/ContextShoppy'
+import useCart from '../hooks/useCartShoppy'
 
 export default function MyCartShoppy() {
-  const { user } = useAuthContext()
-  const { uid } = user
-  const { isLoading, data: products } = useQuery(['cart'], () => getCart(uid))
+  const {
+    cartQuery: { isLoading, data: products },
+  } = useCart()
 
   if (isLoading) <p>Loading..</p>
 
@@ -28,7 +27,7 @@ export default function MyCartShoppy() {
           <ul>
             {products &&
               products.map((product) => (
-                <CartItemShoppy key={product.id} product={product} uid={uid} />
+                <CartItemShoppy key={product.id} product={product} />
               ))}
           </ul>
           <div className="flex justify-between items-center">

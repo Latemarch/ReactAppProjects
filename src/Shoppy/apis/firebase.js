@@ -72,7 +72,6 @@ export async function getProducts() {
 export async function getCart(userId) {
   return get(ref(database, `carts/${userId}`)).then((snapshot) => {
     const items = snapshot.val() || {}
-    console.log(Object.values(items))
     return Object.values(items)
   })
 }
