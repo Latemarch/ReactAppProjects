@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { addOrUpdateToCart } from '../apis/firebase'
 import { IContext, useAuthContext } from '../context/ContextShoppy'
+import useCart from '../hooks/useCartShoppy'
 interface IProduct {
   id: string
   title: string
@@ -10,8 +11,7 @@ interface IProduct {
   options: Array<number | string>
 }
 export default function ProductDetail() {
-  const { user } = useAuthContext() as IContext
-  const { uid } = user
+  const { addOrUpdateItem } = useCart()
   const {
     state: { product },
   } = useLocation()
@@ -22,7 +22,7 @@ export default function ProductDetail() {
   )
   const handleClick = () => {
     const product = { id, image, title, price, option: selected, quantity: 1 }
-    addOrUpdateToCart(uid, product)
+    addOrUpdateItem.mutate(product)
   }
 
   return (
