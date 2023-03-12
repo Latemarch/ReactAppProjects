@@ -2,14 +2,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
 import { addNewProduct } from '../apis/firebase.js'
 import { uploadImage } from '../apis/uploader'
-interface IProduct {
-  title?: string
-  price?: number
-  options?: string
-}
+import { initialProduct, IProduct } from '../components/CartItemShoppy.js'
 
 export default function NewProductShoppy() {
-  const [product, setProduct] = useState<IProduct>({})
+  const [product, setProduct] = useState<IProduct>(initialProduct)
   const [file, setFile] = useState<File | null>()
   const [success, setSuccess] = useState<string | null>(null)
   const [isLoading, setLoading] = useState<boolean>(false)

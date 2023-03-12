@@ -1,21 +1,29 @@
 import React from 'react'
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai'
 import { RiDeleteBin5Fill } from 'react-icons/ri'
-import { addOrUpdateToCart, removeFromCart } from '../apis/firebase'
 import useCart from '../hooks/useCartShoppy'
+
 export interface IProduct {
   id: string
   price: number
   title: string
   image: string
-  option: string | number
+  options: string | Array<number | string>
   quantity: number
+}
+export const initialProduct = {
+  id: '',
+  price: 0,
+  title: '',
+  image: '',
+  options: '',
+  quantity: 0,
 }
 const ICON_CLASS =
   'transition-all cursor-pointer hover:text-brand hover:scale-105 m-1'
 export default function CartItemShoppy({
   product,
-  product: { id, price, title, image, option, quantity },
+  product: { id, price, title, image, options, quantity },
 }: {
   uid: string
   product: IProduct
@@ -34,7 +42,7 @@ export default function CartItemShoppy({
       <div className="flex flex-1  justify-between">
         <div className="basis-3/5">
           <p className="text-lg">{title}</p>
-          <p className="title-lg">{option}</p>
+          <p className="title-lg">{options}</p>
           <p className="text=xl font-bold text-brand">{`${price} 원`}</p>
         </div>
         <div className="text-2xl flex items-center">

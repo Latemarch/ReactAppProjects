@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { addOrUpdateToCart } from '../apis/firebase'
-import { IContext, useAuthContext } from '../context/ContextShoppy'
+import { IProduct } from '../components/CartItemShoppy'
 import useCart from '../hooks/useCartShoppy'
-interface IProduct {
-  id: string
-  title: string
-  image: string
-  price: number
-  options: Array<number | string>
-}
+// interface IProduct {
+//   id: string
+//   title: string
+//   image: string
+//   price: number
+//   options: Array<number | string>
+// }
 export default function ProductDetail() {
   const { addOrUpdateItem } = useCart()
   const {
@@ -21,7 +20,7 @@ export default function ProductDetail() {
     options && options[0],
   )
   const handleClick = () => {
-    const product = { id, image, title, price, option: selected, quantity: 1 }
+    const product = { id, image, title, price, options: selected, quantity: 1 }
     addOrUpdateItem.mutate(product)
   }
 
