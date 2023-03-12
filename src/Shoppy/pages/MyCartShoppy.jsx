@@ -3,7 +3,6 @@ import { BsFillPlusCircleFill } from 'react-icons/bs'
 import { FaEquals } from 'react-icons/fa'
 import CartItemShoppy from '../components/CartItemShoppy'
 import PriceCardShoppy from '../components/PriceCardShoppy'
-import { useAuthContext } from '../context/ContextShoppy'
 import useCart from '../hooks/useCartShoppy'
 
 export default function MyCartShoppy() {

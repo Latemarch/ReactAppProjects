@@ -1,11 +1,12 @@
 import { BsPen, BsShop } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import { login, logout } from '../apis/firebase'
 import { IContext, useAuthContext } from '../context/ContextShoppy'
 import CartStatusShoppy from './CartStatusShoppy'
 import UserShoppy from './UserShoppy'
 
 export default function HeaderShoppy() {
-  const { user, login, logout } = useAuthContext() as IContext
+  const { user } = useAuthContext() as IContext
   return (
     <header className="flex justify-between items-center py-3 p-2 ">
       <Link to="/shoppy" className="flex items-center text-brand ">

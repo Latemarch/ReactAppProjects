@@ -14,6 +14,10 @@ import ProductDetailShoppy from './Shoppy/pages/ProductDetailShoppy'
 import MyCartShoppy from './Shoppy/pages/MyCartShoppy'
 import HomeShoppy from './Shoppy/HomeShoppy'
 import ProtectedRouteShoppy from './Shoppy/components/ProtectedRouteShoppy'
+import AppNetflix from './Netflix/AppNetflix'
+import TvNetflix from './Netflix/pages/TvNetflix'
+import SearchNetflix from './Netflix/pages/SearchNetflix'
+import HomeNetflix from './Netflix/pages/HomeNetflix'
 
 export const projects = [
   { path: 'todo', element: <AppToDoRedux /> },
@@ -40,8 +44,24 @@ export const projects = [
         ),
       },
       { path: 'products/:id', element: <ProductDetailShoppy /> },
-      { path: 'carts', element: <MyCartShoppy /> },
+      {
+        path: 'carts',
+        element: (
+          <ProtectedRouteShoppy requireAdmin={false}>
+            <MyCartShoppy />
+          </ProtectedRouteShoppy>
+        ),
+      },
       { path: 'products', element: <AllProductsShoppy /> },
+    ],
+  },
+  {
+    path: 'netflix',
+    element: <AppNetflix />,
+    children: [
+      { index: true, element: <HomeNetflix /> },
+      { path: 'tv', element: <TvNetflix /> },
+      { path: 'search', element: <SearchNetflix /> },
     ],
   },
 ]

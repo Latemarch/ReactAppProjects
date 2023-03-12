@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { addOrUpdateToCart } from '../apis/firebase'
-import { IContext, useAuthContext } from '../context/ContextShoppy'
 import useCart from '../hooks/useCartShoppy'
 interface IProduct {
   id: string

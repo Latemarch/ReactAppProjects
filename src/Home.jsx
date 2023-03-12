@@ -3,9 +3,11 @@ import SearchHearder from './SearchHearder'
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full items-center">
+    <>
       <SearchHearder />
-      <Outlet />
-    </div>
+      <div className="flex flex-col items-center pt-[50px]">
+        <Outlet />
+      </div>
+    </>
   )
 }
