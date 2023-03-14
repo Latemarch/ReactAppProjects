@@ -8,10 +8,21 @@ const Nav = styled.nav`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  height: 4rem;
+  font-size: 2rem;
 `
-const Col = styled.div``
+const Col = styled.div`
+  display: flex;
+  align-items: center;
+`
 const Logo = styled.svg`
-  margin-right: 50px;
+  margin-right: 5px;
+  width: 10rem;
+  height: 2rem;
+  fill: ${(props) => props.theme.red};
+  path {
+    stroke-width: 6px;
+  }
 `
 const Items = styled.ul`
   display: flex;

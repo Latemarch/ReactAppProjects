@@ -18,9 +18,11 @@ import AppNetflix from './Netflix/AppNetflix'
 import TvNetflix from './Netflix/pages/TvNetflix'
 import SearchNetflix from './Netflix/pages/SearchNetflix'
 import HomeNetflix from './Netflix/pages/HomeNetflix'
+import AppTrello from './Trello/AppTrello'
 
 export const projects = [
   { path: 'todo', element: <AppToDoRedux /> },
+  { path: 'trello', element: <AppTrello /> },
   {
     path: 'youtube',
     element: <AppYoutube />,
@@ -76,9 +78,9 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <RouterProvider router={router} />,
+  // </React.StrictMode>,
 )
 
 // If you want to start measuring performance in your app, pass a function
