@@ -1,5 +1,5 @@
-import { projects } from './index'
 import { Link } from 'react-router-dom'
+import { projects } from './projects'
 
 export default function SearchHearder() {
   return (
