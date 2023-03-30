@@ -1,7 +1,8 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 
 const Nav = styled.nav`
 	background-color: black;
@@ -14,9 +15,9 @@ const Nav = styled.nav`
 	font-size: 1rem;
 `;
 const Col = styled.div`
-	width: 100%;
 	display: flex;
 	align-items: center;
+	margin-right: 2rem;
 `;
 const Logo = styled(motion.svg)`
 	margin: 2rem;
@@ -38,7 +39,7 @@ const Item = styled.li`
 	position: relative;
 	flex-direction: column;
 `;
-const Circle = styled.span`
+const Circle = styled(motion.span)`
 	position: absolute;
 	width: 0.5rem;
 	height: 0.5rem;
@@ -48,7 +49,20 @@ const Circle = styled.span`
 	right: 0;
 	margin: 0 auto;
 	background-color: red;
-	/* background-color: black; */
+`;
+const Search = styled.span`
+	color: white;
+	display: flex;
+	align-items: center;
+	position: relative;
+`;
+const Input = styled(motion.input)`
+	transform-origin: right center;
+	position: absolute;
+	padding-left: 35px;
+	left: -185px;
+	z-index: -1;
+	border-radius: 1rem;
 `;
 
 const logoVariants = {
@@ -64,6 +78,8 @@ const logoVariants = {
 };
 
 export default function HeaderNetflix() {
+	const [searchOpen, setSearchOpen] = useState(true);
+	const location = useLocation().pathname.split("/").pop();
 	return (
 		<Nav>
 			<Col>
@@ -84,13 +100,31 @@ export default function HeaderNetflix() {
 				<Items>
 					<Item>
 						<Link to="/netflix">Home</Link>
-						<Circle />
+						{location !== "tv" ? <Circle layoutId="circle" /> : null}
 					</Item>
 					<Item>
 						<Link to="tv">Tv Shows</Link>
-						<Circle />
+						{location === "tv" ? <Circle layoutId="circle" /> : null}
 					</Item>
 				</Items>
+			</Col>
+			<Col>
+				<Search>
+					<motion.div
+						animate={{ x: searchOpen ? -180 : 0 }}
+						transition={{ type: "linear" }}
+					>
+						<BsSearch
+							style={{ color: searchOpen ? "black" : "white" }}
+							onClick={() => setSearchOpen(!searchOpen)}
+						/>
+					</motion.div>
+					<Input
+						animate={{ scaleX: searchOpen ? 1 : 0 }}
+						transition={{ type: "linear", delay: 0.1 }}
+						placeholder="search..."
+					/>
+				</Search>
 			</Col>
 		</Nav>
 	);
