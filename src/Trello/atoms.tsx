@@ -1,9 +1,14 @@
-import { atom } from "recoil";
-export type toDo = string;
+import { atom } from 'recoil'
+
+export type toDo = string
 export interface IToDos {
-	toDos: toDo[];
+  [key: string]: toDo[]
 }
-export const toDoState = atom({
-	key: "toDo",
-	default: ["a", "b", "c", "d", "e", "f"],
-});
+export const toDoState = atom<IToDos>({
+  key: 'toDo',
+  default: {
+    todos: ['a', 'b', 'c', 'd', 'e', 'f'],
+    doing: [],
+    done: [],
+  },
+})
